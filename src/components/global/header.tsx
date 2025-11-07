@@ -6,7 +6,7 @@ export default function Header() {
       <nav className="flex w-full items-center justify-between px-8 py-5">
         <Link 
           href="/" 
-          className="text-md font-medium text-white transition-opacity hover:opacity-70"
+          className="font-bold text-md font-medium text-white transition-opacity hover:opacity-70"
         >
           Brandon Tran
         </Link>

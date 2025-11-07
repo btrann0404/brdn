@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Serif, Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../styles/globals.css"
-import Header from "@/components/global/header";
+import Navigation from "@/components/global/Navigation";
 
-const ibmPlexSerif = IBM_Plex_Serif({
-  variable: "--font-ibm-plex-serif",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ibmPlexSerif.variable} ${ibmPlexSerif.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <div className="min-h-screen overflow-y-auto px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 relative">
+          <Navigation/>
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #161616;
+  --background: #080a0a;
   --foreground: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #161616;
+    --background: #080a0a;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: url('/bg_overlay.png'), var(--background);
+  /* background: url('/bg_overlay.png'), var(--background); */
+  background: var(--background);
   background-size: cover;
   color: var(--foreground);
-  font-family: var(--font-ibm-plex-serif), sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
