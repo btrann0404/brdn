@@ -51,13 +51,13 @@ export default function Experience() {
       
       <div className="space-y-4 font-mono">
         {experiences.map((exp, index) => (
-          <div key={exp.id} className="group relative cursor-pointer transition-all duration-300 hover:opacity-100 opacity-80">
+          <div key={exp.id} className="group relative cursor-pointer transition-all duration-300 hover:opacity-100 active:opacity-100 opacity-90 md:opacity-80">
             <GlitchText
               text={exp.id}
               as="span"
               delay={0}
               speed={50}
-              className="absolute top-0 text-4xl text-white/0 group-hover:text-white/25 leading-none transition-colors duration-500"
+              className="absolute top-0 text-4xl text-white/0 group-hover:text-white/25 group-active:text-white/25 leading-none transition-colors duration-500"
             />
             <div className="flex items-start justify-between">
               <div>
@@ -66,14 +66,14 @@ export default function Experience() {
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-sm text-white/70 group-hover:text-white/90 font-light transition-colors duration-300"
+                  className="text-sm text-white/70 group-hover:text-white/90 group-active:text-white/90 font-light transition-colors duration-300"
                 />
                 <GlitchText 
                   text={exp.role}
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-[10px] text-white/50 group-hover:text-white/70 font-light tracking-wide transition-colors duration-300"
+                  className="text-[10px] text-white/50 group-hover:text-white/70 group-active:text-white/70 font-light tracking-wide transition-colors duration-300"
                 />
               </div>
               <GlitchText
@@ -81,7 +81,7 @@ export default function Experience() {
                 as="span"
                 delay={0}
                 speed={50}
-                className="text-[11px] text-white/25 group-hover:text-white/60 pt-0.5 relative z-10 transition-colors duration-300"
+                className="text-[11px] text-white/25 group-hover:text-white/60 group-active:text-white/60 pt-0.5 relative z-10 transition-colors duration-300"
               />
             </div>
           </div>

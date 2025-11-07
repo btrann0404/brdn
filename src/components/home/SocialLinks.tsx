@@ -10,7 +10,7 @@ export default function SocialLinks() {
           href="https://github.com/yourusername" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-white/50 font-light hover:text-white/80 transition-colors duration-300"
+          className="text-white/50 font-light hover:text-white/80 active:text-white/80 transition-colors duration-300"
         >
           <GlitchText text="GITHUB" delay={0} speed={50} />
         </a>
@@ -19,7 +19,7 @@ export default function SocialLinks() {
           href="https://linkedin.com/in/yourusername" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-white/50 font-light hover:text-white/80 transition-colors duration-300"
+          className="text-white/50 font-light hover:text-white/80 active:text-white/80 transition-colors duration-300"
         >
           <GlitchText text="LINKEDIN" delay={0} speed={50} />
         </a>
@@ -28,14 +28,14 @@ export default function SocialLinks() {
           href="https://x.com/yourusername" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-white/50 font-light hover:text-white/80 transition-colors duration-300"
+          className="text-white/50 font-light hover:text-white/80 active:text-white/80 transition-colors duration-300"
         >
           <GlitchText text="X" delay={0} speed={50} />
         </a>
         <span className="text-white/20">·</span>
         <a 
           href="mailto:your.email@example.com" 
-          className="text-white/50 font-light hover:text-white/80 transition-colors duration-300"
+          className="text-white/50 font-light hover:text-white/80 active:text-white/80 transition-colors duration-300"
         >
           <GlitchText text="EMAIL" delay={0} speed={50} />
         </a>
