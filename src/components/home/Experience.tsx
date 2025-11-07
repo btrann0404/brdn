@@ -38,14 +38,14 @@ export default function Experience() {
           as="p"
           delay={0}
           speed={50}
-          className="font-mono text-[12px] tracking-[0.35em] text-white/50 font-light uppercase"
+          className="font-mono text-[12px] tracking-[0.35em] text-white/70 font-light uppercase"
         />
         <GlitchText 
           text="Year"
           as="p"
           delay={0}
           speed={50}
-          className="font-mono text-[12px] tracking-[0.35em] text-white/50 font-light uppercase"
+          className="font-mono text-[12px] tracking-[0.35em] text-white/70 font-light uppercase"
         />
       </div>
       
@@ -66,14 +66,14 @@ export default function Experience() {
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-sm text-white/50 group-hover:text-white/60 font-light transition-colors duration-300"
+                  className="text-sm text-white/70 group-hover:text-white/90 font-light transition-colors duration-300"
                 />
                 <GlitchText 
                   text={exp.role}
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-[10px] text-white/50 group-hover:text-white/60 font-light tracking-wide transition-colors duration-300"
+                  className="text-[10px] text-white/50 group-hover:text-white/70 font-light tracking-wide transition-colors duration-300"
                 />
               </div>
               <GlitchText

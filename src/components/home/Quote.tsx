@@ -10,14 +10,14 @@ export default function Quote() {
         as="p"
         delay={0}
         speed={50}
-        className="text-md text-white/50 group-hover:text-white/70 font-light leading-relaxed mb-2 italic transition-colors duration-300"
+        className="text-md text-white/60 group-hover:text-white/80 font-light leading-relaxed mb-2 italic transition-colors duration-300"
       />
       <GlitchText 
         text="— REI KAWAKUBO"
         as="p"
         delay={0}
         speed={50}
-        className="text-[10px] text-white/30 group-hover:text-white/50 font-light tracking-wider transition-colors duration-300"
+        className="text-[10px] text-white/40 group-hover:text-white/60 font-light tracking-wider transition-colors duration-300"
       />
     </div>
   );

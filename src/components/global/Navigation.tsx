@@ -6,7 +6,7 @@ export default function Navigation() {
   return (
     <div className="fixed top-8 right-8 group">
       <div className="relative">
-        <div className="text-white/50 hover:text-white/80 transition-colors duration-300 text-[11px] tracking-[0.35em] cursor-pointer text-right uppercase font-light">
+        <div className="text-white/50 hover:text-white/90 transition-colors duration-300 text-[11px] tracking-[0.35em] cursor-pointer text-right uppercase font-light">
           <GlitchText text="INDEX" delay={0} speed={50} />
         </div>
         <div className="absolute -bottom-0.5 right-0 w-0 group-hover:w-full h-px bg-white/20 transition-all duration-500"></div>
