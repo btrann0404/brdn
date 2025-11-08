@@ -29,19 +29,25 @@ export default function Navigation() {
       }`}>
         <div className="relative group/item">
           <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="#home" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
+          <a href="/" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
+            HOME
+          </a>
+        </div>
+        <div className="relative group/item">
+          <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
+          <a href="about" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
             ABOUT
           </a>
         </div>
         <div className="relative group/item">
           <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="#work" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
+          <a href="projects" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
             PROJECTS
           </a>
         </div>
         <div className="relative group/item">
           <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="#about" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
+          <a href="collection" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
             COLLECTION
           </a>
         </div>
