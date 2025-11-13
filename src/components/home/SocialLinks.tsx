@@ -34,7 +34,7 @@ export default function SocialLinks() {
         </a>
         <span className="text-white/20">·</span>
         <a 
-          href="tranbrandon04@gmail.com" 
+          href="mailto:tranbrandon04@gmail.com" 
           className="text-white/50 font-light hover:text-white/80 active:text-white/80 transition-colors duration-300"
         >
           <GlitchText text="EMAIL" delay={0} speed={50} />
