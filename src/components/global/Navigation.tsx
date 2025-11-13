@@ -17,7 +17,7 @@ export default function Navigation() {
           onClick={toggleMenu}
           className="text-white/50 hover:text-white/90 active:text-white/90 transition-colors duration-300 text-[11px] tracking-[0.35em] cursor-pointer text-right uppercase font-light"
         >
-          <GlitchText text="INDEX" delay={0} speed={50} />
+          <h1>INDEX</h1>
         </div>
         <div className={`absolute -bottom-0.5 right-0 h-px bg-white/20 transition-all duration-500 ${isOpen ? 'w-full' : 'w-0 group-hover:w-full'}`}></div>
       </div>
