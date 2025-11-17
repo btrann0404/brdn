@@ -19,3 +19,18 @@ body {
   color: var(--foreground);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+/* Smooth dragging cursor */
+.cursor-move {
+  cursor: move;
+  cursor: grab;
+}
+
+.cursor-move:active {
+  cursor: grabbing;
+}
+
+/* Radial gradient utility for gallery lighting */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
+}

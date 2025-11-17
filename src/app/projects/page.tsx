@@ -1,13 +1,13 @@
-import BackButton from '@/components/global/BackButton'
+"use client";
 
+import ProjectShowcase from '@/components/projects/ProjectShowcase';
+import BackButton from '@/components/global/BackButton';
 
-function Projects() {
+export default function Projects() {
   return (
-    <>
-        <BackButton/>
-        <div>coming soon...</div>
-    </>
-  )
+    <div className="relative">
+      <BackButton />
+      <ProjectShowcase />
+    </div>
+  );
 }
-
-export default Projects

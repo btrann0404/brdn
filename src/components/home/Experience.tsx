@@ -59,6 +59,10 @@ export default function Experience() {
               speed={50}
               className="absolute top-0 text-4xl text-white/0 group-hover:text-white/25 group-active:text-white/25 leading-none transition-colors duration-500"
             />
+            {/* Small ASCII arrow on hover */}
+            <pre className="absolute -left-4 top-1 text-[10px] text-white/0 group-hover:text-white/30 transition-colors duration-300 font-mono select-none pointer-events-none">
+              →
+            </pre>
             <div className="flex items-start justify-between">
               <div>
                 <GlitchText 

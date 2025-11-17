@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css"
 import Navigation from "@/components/global/Navigation";
+import CornerAccents from "@/components/effects/CornerAccents";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,6 +24,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
+        {/* Corner accents on all pages */}
+        <CornerAccents />
+        
         <div className="min-h-screen overflow-y-auto px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 relative">
           <Navigation/>
           {children}
