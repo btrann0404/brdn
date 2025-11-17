@@ -4,7 +4,7 @@ function Collection() {
   return (
     <>
         <BackButton/>
-        <div>coming soon...</div>
+        <div>collection coming soon...</div>
     </>
   )
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import GlitchText from "@/components/effects/GlitchText";
+import Image from "next/image";
 
 export default function Experience() {
   const experiences = [
@@ -8,62 +9,58 @@ export default function Experience() {
       id: "01",
       company: "Societe Generale",
       role: "Software",
-      year: "25"
+      year: "25",
+      logo: "/companylogo/socgenlogo.png"
     },
     {
       id: "02",
       company: "Roche Diagnostics",
       role: "Software",
-      year: "24"
+      year: "24",
+      logo: "/companylogo/rochelogo.png"
     },
     {
       id: "03",
       company: "UC Irvine - Computer Sciences",
       role: "Research",
-      year: "24"
+      year: "24",
+      logo: "/companylogo/ucilogo.png"
     },
     {
       id: "04",
       company: "WanderWith",
       role: "Software",
-      year: "23"
+      year: "23",
+      logo: "/companylogo/wanderwithlogo.png"
     },
   ];
 
   return (
     <div className="mb-8 max-w-md">
-      <div className="mb-4 flex flex-row justify-between">
+      <div className="mb-4">
         <GlitchText 
           text="Past Experience"
           as="p"
           delay={0}
           speed={50}
-          className="font-mono text-[12px] tracking-[0.35em] text-white/70 font-light uppercase"
-        />
-        <GlitchText 
-          text="Year"
-          as="p"
-          delay={0}
-          speed={50}
-          className="font-mono text-[12px] tracking-[0.35em] text-white/70 font-light uppercase"
+          className="font-mono text-[12px] tracking-[0.35em] text-white/80 font-light uppercase"
         />
       </div>
       
       <div className="space-y-4 font-mono">
         {experiences.map((exp, index) => (
           <div key={exp.id} className="group relative cursor-pointer transition-all duration-300 hover:opacity-100 active:opacity-100 opacity-90 md:opacity-80">
-            <GlitchText
-              text={exp.id}
-              as="span"
-              delay={0}
-              speed={50}
-              className="absolute top-0 text-4xl text-white/0 group-hover:text-white/25 group-active:text-white/25 leading-none transition-colors duration-500"
-            />
-            {/* Small ASCII arrow on hover */}
-            <pre className="absolute -left-4 top-1 text-[10px] text-white/0 group-hover:text-white/30 transition-colors duration-300 font-mono select-none pointer-events-none">
-              →
-            </pre>
-            <div className="flex items-start justify-between">
+            <div className="flex items-center gap-4">
+              {exp.logo && (
+                <div className="relative w-8 h-8 flex-shrink-0 opacity-30 group-hover:opacity-60 transition-opacity duration-300">
+                  <Image
+                    src={exp.logo}
+                    alt={exp.company}
+                    fill
+                    className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              )}
               <div>
                 <GlitchText 
                   text={exp.company}
@@ -80,13 +77,6 @@ export default function Experience() {
                   className="text-[10px] text-white/50 group-hover:text-white/70 group-active:text-white/70 font-light tracking-wide transition-colors duration-300"
                 />
               </div>
-              <GlitchText
-                text={exp.year}
-                as="span"
-                delay={0}
-                speed={50}
-                className="text-[11px] text-white/25 group-hover:text-white/60 group-active:text-white/60 pt-0.5 relative z-10 transition-colors duration-300"
-              />
             </div>
           </div>
         ))}

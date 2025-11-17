@@ -35,8 +35,8 @@ export default function RightGradient() {
           {/* Gradient mask - fades from left (transparent) to right (visible) */}
           <linearGradient id="gridGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="30%" stopColor="white" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="white" stopOpacity="0.8" />
+            <stop offset="3%" stopColor="white" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="white" stopOpacity="1" />
           </linearGradient>
           
           {/* Mask to apply gradient */}

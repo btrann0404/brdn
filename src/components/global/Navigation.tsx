@@ -1,56 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import GlitchText from "@/components/effects/GlitchText";
-
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div className="fixed top-8 right-8 group z-50">
-      <div className="relative">
-        <div 
-          onClick={toggleMenu}
-          className="text-white/50 hover:text-white/90 active:text-white/90 transition-colors duration-300 text-[11px] tracking-[0.35em] cursor-pointer text-right uppercase font-light"
-        >
-          <h1>INDEX</h1>
-        </div>
-        <div className={`absolute -bottom-0.5 right-0 h-px bg-white/20 transition-all duration-500 ${isOpen ? 'w-full' : 'w-0 group-hover:w-full'}`}></div>
-      </div>
-      
-      <div className={`absolute top-10 right-0 flex flex-col gap-4 text-[11px] tracking-[0.2em] pt-4 transition-all duration-500 ${
-        isOpen 
-          ? 'opacity-100 visible translate-y-0' 
-          : 'opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0'
-      }`}>
-        <div className="relative group/item">
-          <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="/" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
-            HOME
-          </a>
-        </div>
-        <div className="relative group/item">
-          <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="about" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
-            ABOUT
-          </a>
-        </div>
-        <div className="relative group/item">
-          <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="projects" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
-            PROJECTS
-          </a>
-        </div>
-        <div className="relative group/item">
-          <div className="absolute right-0 -mr-3 top-1/2 -translate-y-1/2 w-0 group-hover/item:w-1.5 h-px bg-white/30 transition-all duration-300"></div>
-          <a href="collection" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 text-right block">
-            COLLECTION
-          </a>
-        </div>
+    <div className="fixed top-8 right-8 z-50">
+      <div className="flex flex-row gap-6 text-[11px] tracking-[0.2em]">
+        <a href="/" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 uppercase">
+          HOME
+        </a>
+        <a href="about" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 uppercase">
+          ABOUT
+        </a>
+        <a href="projects" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 uppercase">
+          PROJECTS
+        </a>
+        <a href="collection" className="text-white/40 hover:text-white/90 active:text-white/90 hover:tracking-[0.25em] transition-all duration-300 uppercase">
+          COLLECTION
+        </a>
       </div>
     </div>
   );
