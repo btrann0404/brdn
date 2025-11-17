@@ -9,6 +9,7 @@ interface ExperimentalViewProps {
   visibleRows: Set<number>;
   dragging: number | null;
   onMouseDown: (e: React.MouseEvent, index: number) => void;
+  onProjectClick: () => void;
 }
 
 export default function ExperimentalView({ 
@@ -16,7 +17,8 @@ export default function ExperimentalView({
   positions, 
   visibleRows, 
   dragging, 
-  onMouseDown 
+  onMouseDown,
+  onProjectClick
 }: ExperimentalViewProps) {
   return (
     <>
@@ -121,7 +123,7 @@ export default function ExperimentalView({
                         className="font-mono text-[7px] tracking-[0.25em] uppercase text-white/50 hover:text-white/80 underline underline-offset-2 transition-colors duration-200"
                         onClick={(e) => {
                           e.stopPropagation();
-                          alert(`View ${project.name} case study`);
+                          onProjectClick();
                         }}
                       >
                         View →

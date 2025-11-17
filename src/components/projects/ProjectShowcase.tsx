@@ -6,6 +6,7 @@ import { projects } from './data';
 import ProjectHeader from './ProjectHeader';
 import DefaultView from './DefaultView';
 import ExperimentalView from './ExperimentalView';
+import ComingSoonModal from '@/components/effects/ComingSoonModal';
 
 export default function ProjectShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -14,6 +15,8 @@ export default function ProjectShowcase() {
   const [viewMode, setViewMode] = useState<ViewMode>('default');
   const [visibleRows, setVisibleRows] = useState<Set<number>>(new Set());
   const [showScrollHint, setShowScrollHint] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [modalKey, setModalKey] = useState(0);
 
   useEffect(() => {
     const newPositions = projects.map((_, index) => {
@@ -175,6 +178,19 @@ export default function ProjectShowcase() {
     setDragging(index);
   };
 
+  const handleProjectClick = () => {
+    // If modal is already showing, restart it by changing key
+    if (showModal) {
+      setModalKey(prev => prev + 1);
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <div 
       ref={sectionRef}
@@ -208,7 +224,11 @@ export default function ProjectShowcase() {
       `}} />
 
       {viewMode === 'default' && (
-        <DefaultView projects={projects} visibleRows={visibleRows} />
+        <DefaultView 
+          projects={projects} 
+          visibleRows={visibleRows}
+          onProjectClick={handleProjectClick}
+        />
       )}
 
       {viewMode === 'experimental' && (
@@ -218,8 +238,11 @@ export default function ProjectShowcase() {
           visibleRows={visibleRows}
           dragging={dragging}
           onMouseDown={handleMouseDown}
+          onProjectClick={handleProjectClick}
         />
       )}
+
+      <ComingSoonModal key={modalKey} isOpen={showModal} onClose={handleModalClose} />
     </div>
   );
 }

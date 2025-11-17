@@ -6,9 +6,10 @@ import { Project } from './types';
 interface DefaultViewProps {
   projects: Project[];
   visibleRows: Set<number>;
+  onProjectClick: () => void;
 }
 
-export default function DefaultView({ projects, visibleRows }: DefaultViewProps) {
+export default function DefaultView({ projects, visibleRows, onProjectClick }: DefaultViewProps) {
   return (
     <div className="relative max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
@@ -26,7 +27,7 @@ export default function DefaultView({ projects, visibleRows }: DefaultViewProps)
                 transform: isRowVisible ? 'translateY(0)' : 'translateY(30px)',
                 transition: `opacity 0.8s ease-out, transform 0.8s ease-out`
               }}
-              onClick={() => alert(`View ${project.name} case study`)}
+              onClick={onProjectClick}
             >
               <div className="mb-8 flex items-baseline justify-between">
                 <div>
