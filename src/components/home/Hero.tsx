@@ -11,7 +11,7 @@ export default function Hero() {
           as="h1"
           delay={0}
           speed={50}
-          className="font-sans text-5xl sm:text-4xl md:text-7xl lg:text-4xl font-light text-white leading-none mb-4" 
+          className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-light text-white leading-none mb-4" 
           style={{ fontFamily: 'var(--font-inter)' }}
         />
       </div>
@@ -22,7 +22,7 @@ export default function Hero() {
           as="p"
           delay={0}
           speed={50}
-          className="text-sm text-white/70 font-light leading-relaxed uppercase tracking-wide font-mono"
+          className="text-xs sm:text-sm text-white/70 font-light leading-relaxed uppercase tracking-wide font-mono"
         />
       </div>
     </>

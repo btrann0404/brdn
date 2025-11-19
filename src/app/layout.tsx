@@ -30,7 +30,7 @@ export default function RootLayout({
         {/* Corner accents on all pages */}
         <CornerAccents />
         
-        <div className="min-h-screen overflow-y-auto px-8 sm:px-12 md:px-16 lg:px-24 py-16 md:py-24 relative">
+        <div className="min-h-screen overflow-y-auto px-8 sm:px-12 md:px-16 lg:px-24 pt-20 sm:pt-16 md:pt-24 pb-16 md:pb-24 relative">
           <Navigation/>
           {children}
         </div>

@@ -37,22 +37,22 @@ export default function Experience() {
 
   return (
     <div className="mb-8 max-w-md">
-      <div className="mb-4">
+      <div className="mb-3 sm:mb-4">
         <GlitchText 
           text="Past Experience"
           as="p"
           delay={0}
           speed={50}
-          className="font-mono text-[12px] tracking-[0.35em] text-white/80 font-light uppercase"
+          className="font-mono text-[11px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.35em] text-white/80 font-light uppercase"
         />
       </div>
       
-      <div className="space-y-4 font-mono">
+      <div className="space-y-3 sm:space-y-4 font-mono">
         {experiences.map((exp, index) => (
           <div key={exp.id} className="group relative cursor-pointer transition-all duration-300 hover:opacity-100 active:opacity-100 opacity-90 md:opacity-80">
             <div className="flex items-center gap-4">
               {exp.logo && (
-                <div className="relative w-8 h-8 flex-shrink-0 opacity-30 group-hover:opacity-60 transition-opacity duration-300">
+                <div className="relative w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0 opacity-30 group-hover:opacity-60 transition-opacity duration-300">
                   <Image
                     src={exp.logo}
                     alt={exp.company}
@@ -67,14 +67,14 @@ export default function Experience() {
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-sm text-white/70 group-hover:text-white/90 group-active:text-white/90 font-light transition-colors duration-300"
+                  className="text-xs sm:text-sm text-white/70 group-hover:text-white/90 group-active:text-white/90 font-light transition-colors duration-300"
                 />
                 <GlitchText 
                   text={exp.role}
                   as="p"
                   delay={0}
                   speed={50}
-                  className="text-[10px] text-white/50 group-hover:text-white/70 group-active:text-white/70 font-light tracking-wide transition-colors duration-300"
+                  className="text-[9px] sm:text-[10px] text-white/50 group-hover:text-white/70 group-active:text-white/70 font-light tracking-wide transition-colors duration-300"
                 />
               </div>
             </div>

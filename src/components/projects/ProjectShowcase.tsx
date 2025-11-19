@@ -113,12 +113,12 @@ export default function ProjectShowcase() {
   });
 
   useEffect(() => {
-    const handleGlobalMouseMove = (e: MouseEvent) => {
+    const handleGlobalMove = (clientX: number, clientY: number) => {
       if (!dragStateRef.current.isDragging || !dragStateRef.current.element || !sectionRef.current) return;
       
       const rect = sectionRef.current.getBoundingClientRect();
-      const newX = ((e.clientX - rect.left - dragStateRef.current.offsetX) / rect.width) * 100;
-      const newY = e.clientY - rect.top - dragStateRef.current.offsetY;
+      const newX = ((clientX - rect.left - dragStateRef.current.offsetX) / rect.width) * 100;
+      const newY = clientY - rect.top - dragStateRef.current.offsetY;
       
       const clampedX = Math.max(0, Math.min(88, newX));
       const clampedY = Math.max(0, Math.min(1400, newY));
@@ -129,7 +129,18 @@ export default function ProjectShowcase() {
       dragStateRef.current.startPos = { x: clampedX, y: clampedY };
     };
 
-    const handleGlobalMouseUp = () => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      handleGlobalMove(e.clientX, e.clientY);
+    };
+
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        e.preventDefault();
+        handleGlobalMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const handleGlobalEnd = () => {
       if (dragStateRef.current.isDragging) {
         const index = dragStateRef.current.index;
         const finalPos = dragStateRef.current.startPos;
@@ -147,19 +158,21 @@ export default function ProjectShowcase() {
     };
 
     window.addEventListener('mousemove', handleGlobalMouseMove);
-    window.addEventListener('mouseup', handleGlobalMouseUp);
+    window.addEventListener('mouseup', handleGlobalEnd);
+    window.addEventListener('touchmove', handleGlobalTouchMove, { passive: false });
+    window.addEventListener('touchend', handleGlobalEnd);
 
     return () => {
       window.removeEventListener('mousemove', handleGlobalMouseMove);
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      window.removeEventListener('mouseup', handleGlobalEnd);
+      window.removeEventListener('touchmove', handleGlobalTouchMove);
+      window.removeEventListener('touchend', handleGlobalEnd);
     };
   }, []);
 
-  const handleMouseDown = (e: React.MouseEvent, index: number) => {
-    if (e.button !== 0 || !sectionRef.current) return;
-    e.preventDefault();
+  const handleStart = (clientX: number, clientY: number, element: HTMLElement, index: number) => {
+    if (!sectionRef.current) return;
     
-    const element = e.currentTarget as HTMLElement;
     const sectionRect = sectionRef.current.getBoundingClientRect();
     const pos = positions[index];
     
@@ -169,13 +182,27 @@ export default function ProjectShowcase() {
     dragStateRef.current = {
       isDragging: true,
       index,
-      offsetX: e.clientX - sectionRect.left - elementLeft,
-      offsetY: e.clientY - sectionRect.top - elementTop,
+      offsetX: clientX - sectionRect.left - elementLeft,
+      offsetY: clientY - sectionRect.top - elementTop,
       element,
       startPos: { x: pos.x, y: pos.y }
     };
     
     setDragging(index);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent, index: number) => {
+    if (e.button !== 0 || !sectionRef.current) return;
+    e.preventDefault();
+    handleStart(e.clientX, e.clientY, e.currentTarget as HTMLElement, index);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent, index: number) => {
+    if (e.touches.length > 0) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      handleStart(touch.clientX, touch.clientY, e.currentTarget as HTMLElement, index);
+    }
   };
 
   const handleProjectClick = () => {
@@ -238,6 +265,7 @@ export default function ProjectShowcase() {
           visibleRows={visibleRows}
           dragging={dragging}
           onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
           onProjectClick={handleProjectClick}
         />
       )}

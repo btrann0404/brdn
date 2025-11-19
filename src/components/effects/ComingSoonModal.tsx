@@ -55,11 +55,11 @@ export default function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProp
         
         {/* Modal content */}
         <div 
-          className={`relative border border-white/20 bg-black/80 px-12 py-8 transition-all duration-500 ${
+          className={`relative border border-white/20 bg-black/80 px-8 sm:px-12 py-6 sm:py-8 transition-all duration-500 ${
             isFadingOut ? 'opacity-0 scale-95' : 'opacity-100 scale-100 animate-[fadeIn_0.3s_ease-out]'
           }`}
         >
-          <p className="font-mono text-[14px] tracking-[0.2em] text-white/70 text-center">
+          <p className="font-mono text-[12px] sm:text-[14px] tracking-[0.2em] text-white/70 text-center">
             coming soon :)
           </p>
         </div>

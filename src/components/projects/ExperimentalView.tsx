@@ -9,6 +9,7 @@ interface ExperimentalViewProps {
   visibleRows: Set<number>;
   dragging: number | null;
   onMouseDown: (e: React.MouseEvent, index: number) => void;
+  onTouchStart: (e: React.TouchEvent, index: number) => void;
   onProjectClick: () => void;
 }
 
@@ -18,27 +19,28 @@ export default function ExperimentalView({
   visibleRows, 
   dragging, 
   onMouseDown,
+  onTouchStart,
   onProjectClick
 }: ExperimentalViewProps) {
   return (
     <>
       <div className="max-w-2xl mx-auto text-center px-6 pt-32 pb-12">
         <p 
-          className="text-white/40 font-light"
+          className="text-white/40 font-light text-[12px] sm:text-[13px]"
           style={{ 
             fontFamily: 'Helvetica Neue, Arial, sans-serif',
-            fontSize: '13px',
             letterSpacing: '0.01em',
             lineHeight: '1.6'
           }}
         >
-          Drag and rearrange the cards to explore the collection.
+          <span className="hidden sm:inline">Drag and rearrange the cards to explore the collection.</span>
+          <span className="sm:hidden">Tap and drag cards to explore the collection.</span>
           <br />
-          <span className="text-white/20 text-xs">Each card is interactive and can be repositioned.</span>
+          <span className="text-white/20 text-[11px] sm:text-xs">Each card is interactive and can be repositioned.</span>
         </p>
       </div>
 
-      <div className="relative max-w-7xl mx-auto pb-20" style={{ minHeight: '1600px' }}>
+      <div className="relative max-w-7xl mx-auto pb-20 px-4 sm:px-0" style={{ minHeight: '1600px' }}>
         {positions.length > 0 && projects.map((project, index) => {
           const pos = positions[index];
           const rowIndex = Math.floor(index / 2);
@@ -62,6 +64,7 @@ export default function ExperimentalView({
                 touchAction: 'none'
               }}
               onMouseDown={(e) => onMouseDown(e, index)}
+              onTouchStart={(e) => onTouchStart(e, index)}
             >
               <div className="relative w-full h-full">
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black -m-2">
