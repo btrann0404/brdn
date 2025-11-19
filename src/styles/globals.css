@@ -18,6 +18,8 @@ body {
   background-size: cover;
   color: var(--foreground);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
 }
 
 /* Smooth dragging cursor */

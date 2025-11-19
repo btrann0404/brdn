@@ -12,6 +12,7 @@ export default function ProjectShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [positions, setPositions] = useState<ProjectPosition[]>([]);
   const [dragging, setDragging] = useState<number | null>(null);
+  const [zIndexOrder, setZIndexOrder] = useState<number[]>([]);
   const [viewMode, setViewMode] = useState<ViewMode>('default');
   const [visibleRows, setVisibleRows] = useState<Set<number>>(new Set());
   const [showScrollHint, setShowScrollHint] = useState(true);
@@ -19,29 +20,32 @@ export default function ProjectShowcase() {
   const [modalKey, setModalKey] = useState(0);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 640; // sm breakpoint
+    const mobileScale = 0.65; // Scale down to 65% on mobile
+    
     const newPositions = projects.map((_, index) => {
       const rand = Math.random();
       
       let width, height;
       
       if (rand > 0.7) {
-        width = 420;
-        height = 300;
+        width = isMobile ? 420 * mobileScale : 420;
+        height = isMobile ? 300 * mobileScale : 300;
       } else if (rand > 0.4) {
-        width = 280;
-        height = 420;
+        width = isMobile ? 280 * mobileScale : 280;
+        height = isMobile ? 420 * mobileScale : 420;
       } else {
-        width = 320;
-        height = 440;
+        width = isMobile ? 320 * mobileScale : 320;
+        height = isMobile ? 440 * mobileScale : 440;
       }
       
-      const cols = 3;
+      const cols = isMobile ? 2 : 3; // 2 columns on mobile instead of 3
       const col = index % cols;
       const row = Math.floor(index / cols);
       
-      const colWidth = 28;
-      const colGap = 2;
-      const rowHeight = 460;
+      const colWidth = isMobile ? 42 : 28;
+      const colGap = isMobile ? 4 : 2;
+      const rowHeight = isMobile ? 320 : 460;
       
       const totalWidth = (colWidth * cols) + (colGap * (cols - 1));
       const centerOffset = (100 - totalWidth) / 2;
@@ -49,13 +53,13 @@ export default function ProjectShowcase() {
       const baseX = centerOffset + (col * (colWidth + colGap));
       const baseY = row * rowHeight + 30;
       
-      const offsetX = (Math.random() - 0.5) * 8;
-      const offsetY = (Math.random() - 0.5) * 50;
+      const offsetX = (Math.random() - 0.5) * (isMobile ? 4 : 8);
+      const offsetY = (Math.random() - 0.5) * (isMobile ? 25 : 50);
       
       return {
         x: baseX + offsetX,
         y: baseY + offsetY,
-        rotation: (Math.random() - 0.5) * 8,
+        rotation: (Math.random() - 0.5) * (isMobile ? 4 : 8),
         scale: 0.95 + Math.random() * 0.1,
         width,
         height
@@ -134,7 +138,7 @@ export default function ProjectShowcase() {
     };
 
     const handleGlobalTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
+      if (e.touches.length > 0 && dragStateRef.current.isDragging) {
         e.preventDefault();
         handleGlobalMove(e.touches[0].clientX, e.touches[0].clientY);
       }
@@ -189,6 +193,12 @@ export default function ProjectShowcase() {
     };
     
     setDragging(index);
+    
+    // Move this card to the front of the z-index queue
+    setZIndexOrder(prev => {
+      const filtered = prev.filter(i => i !== index);
+      return [...filtered, index];
+    });
   };
 
   const handleMouseDown = (e: React.MouseEvent, index: number) => {
@@ -199,7 +209,7 @@ export default function ProjectShowcase() {
 
   const handleTouchStart = (e: React.TouchEvent, index: number) => {
     if (e.touches.length > 0) {
-      e.preventDefault();
+      // Don't prevent default immediately - let it scroll naturally
       const touch = e.touches[0];
       handleStart(touch.clientX, touch.clientY, e.currentTarget as HTMLElement, index);
     }
@@ -221,7 +231,7 @@ export default function ProjectShowcase() {
   return (
     <div 
       ref={sectionRef}
-      className="relative w-full overflow-visible"
+      className="relative w-full overflow-visible touch-pan-y"
     >
       <ProjectHeader viewMode={viewMode} onViewModeChange={setViewMode} />
 
@@ -264,6 +274,7 @@ export default function ProjectShowcase() {
           positions={positions}
           visibleRows={visibleRows}
           dragging={dragging}
+          zIndexOrder={zIndexOrder}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
           onProjectClick={handleProjectClick}

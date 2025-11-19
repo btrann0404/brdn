@@ -22,8 +22,8 @@ export default function Navigation() {
   };
 
   return (
-    <div className="fixed top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-50 backdrop-blur-sm bg-black/10 px-3 py-2 sm:px-4 sm:py-3 rounded-sm">
-      <div className="flex flex-row gap-3 sm:gap-4 md:gap-6 text-[9px] sm:text-[10px] md:text-[11px]">
+    <div className="fixed top-6 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-50 backdrop-blur-sm bg-black/10 px-3 py-2 sm:px-4 sm:py-3 rounded-sm">
+      <div className="flex flex-row gap-3.5 sm:gap-4 md:gap-6 text-[10px] sm:text-[10px] md:text-[11px]">
         <a href="/" className={linkClass('/')}>
           {isActive('/') && <span className="absolute -left-2 sm:-left-3 top-[2px] text-white/60 text-[7px] sm:text-[8px]">✦</span>}
           HOME

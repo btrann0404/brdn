@@ -11,8 +11,8 @@ interface DefaultViewProps {
 
 export default function DefaultView({ projects, visibleRows, onProjectClick }: DefaultViewProps) {
   return (
-    <div className="relative max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-16 sm:pt-32 pb-20 touch-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-16 lg:gap-20">
         {projects.map((project, index) => {
           const rowIndex = Math.floor(index / 2);
           const isRowVisible = visibleRows.has(rowIndex);
@@ -21,7 +21,7 @@ export default function DefaultView({ projects, visibleRows, onProjectClick }: D
             <div
               key={project.name}
               data-project-index={index}
-              className="group cursor-pointer"
+              className="group cursor-pointer touch-auto"
               style={{
                 opacity: isRowVisible ? 1 : 0,
                 transform: isRowVisible ? 'translateY(0)' : 'translateY(30px)',

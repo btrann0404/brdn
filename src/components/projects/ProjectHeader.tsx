@@ -9,7 +9,7 @@ interface ProjectHeaderProps {
 
 export default function ProjectHeader({ viewMode, onViewModeChange }: ProjectHeaderProps) {
   return (
-    <div className="relative mb-6 sm:mb-8">
+    <div className="relative mb-6 sm:mb-8 touch-auto">
       <div className="pt-4">
         <div className="mb-8 sm:mb-12">
           <p className="font-mono text-[9px] sm:text-[10px] tracking-[0.15em] uppercase text-white/30 mb-3 sm:mb-4">
